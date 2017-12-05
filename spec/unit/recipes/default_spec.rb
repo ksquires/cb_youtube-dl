@@ -19,8 +19,8 @@ describe 'cb_youtube-dl::default' do
       expect { chef_run }.to_not raise_error
     end
 
-    it 'creates a file' do
-      expect(chef_run).to render_file('/etc/cron.weekly/youtube-dl.sh').with_content(/pip install youtube-dl --upgrade/)
+    it 'upgrades a package' do
+      expect(chef_run).to upgrade_package('youtube-dl')
     end
   end
 end
